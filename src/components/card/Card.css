@@ -1,0 +1,18 @@
+.main-card-div{
+    height: 450px;
+    width: 270px;
+    background-color: rgba(220, 220, 220, 0.315);
+    border-radius: 20px;
+    margin: 30px;
+    padding: 30px;
+    
+
+}
+.sub-div{
+    display: flex;
+    flex-direction: row;
+}
+.card-btn{
+    margin-left: 60px;
+    height: 40px;
+}
