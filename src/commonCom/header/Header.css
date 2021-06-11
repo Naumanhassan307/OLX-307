@@ -1,0 +1,21 @@
+.main-nav{
+    /* background-color: aqua !important; */
+    height: 100px !important;
+}
+.main-nav-btn{
+   margin-left: 100px !important;
+}
+.nav-first-form{
+    height: 50px !important;
+    width: 300px !important;
+    padding-left: 100px !important;
+}
+.nav-logo{
+    padding-left: 100px ;
+    font-size: xx-large !important;
+}
+.nav-2nd-form{
+    height: 40px !important;
+    width: 400px !important;
+    margin-right: 50px !important;
+}
