@@ -1,5 +1,10 @@
 
-import {ADD_CARD, FETCH_CARD,  DEL_CARD} from "../constTypes/ConstType"
+import {
+  ADD_CARD,
+  FETCH_CARD,
+  DEL_CARD,
+  UPD_CARD,
+} from "../constTypes/ConstType";
 
 
 
@@ -13,30 +18,26 @@ let initialState = {
 
 function CardReducer(state = initialState, action){
 
-    switch (action.type){
-        case ADD_CARD:{
-            return{
-                
-            }
+    switch (action.type) {
+      case ADD_CARD: {
+        return {};
+      }
+      case FETCH_CARD: {
+        return {
+          initialState:action.payload
+        };
+      }
+      case DEL_CARD: {
+        return {};
+      }
+      case UPD_CARD: {
+        return {
+            initialState: action.payload
+        };
+      }
 
-        }
-        case FETCH_CARD:{
-            return{
-
-            }
-
-        }
-        case DEL_CARD:{
-            return{
-
-            }
-
-        }
-            
-            
-    
-        default:
-            return state;
+      default:
+        return state;
     }
 }
 export default CardReducer;

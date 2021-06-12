@@ -1,5 +1,6 @@
 import { Navbar, Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
+import CustomizedDialogs from "../../components/addCard/AddCard"
 
 import "./Header.css";
 function Header() {
@@ -18,11 +19,7 @@ function Header() {
               className="mr-sm-2"
             />
           </Form>
-
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp;
           <Form inline>
             <InputGroup>
               <InputGroup.Prepend>
@@ -38,10 +35,10 @@ function Header() {
               />
             </InputGroup>
           </Form>
-
-          <Button outline="none" className="main-nav-btn">
+          {/* <Button outline="none" className="main-nav-btn">
             Login
-          </Button>
+          </Button> */}
+          <CustomizedDialogs />
         </Navbar.Collapse>
       </Navbar>
     </>

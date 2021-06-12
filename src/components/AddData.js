@@ -1,67 +1,58 @@
 
-import {db} from "../config/Firebase"
+// import {db} from "../config/Firebase"
 
-function AddData(){
-    const ctaAddHandler = async () => {
-        let newData = {
-            name : "new data", 
-            no: 3
-        }
-        try {
-            let res = await db.collection("Ads").add(newData)
-            console.log("response ", res)
-        } catch (error) {
-            console.log("error", error)
-        }
-    }
-    const ctaFetchHandler = async () => {
+// import {useSelector, useDispatch } from "react-redux"
+
+
+// import { UpdateCard, FetchCard } from "../redux/actions/Action";
+
+// function AddData(){
+//     const ctaAddHandler = async () => {
+//         let newData = {
+//             name : "new data", 
+//             no: 3
+//         }
+//         try {
+//             let res = await db.collection("Ads").add(newData)
+//             console.log("response ", res)
+//         } catch (error) {
+//             console.log("error", error)
+//         }
+//     }
+//     const ctaFetchHandler =  () => {
+//         dispatch(FetchCard());
+       
+//     }
+
+
+//     const dispatch = useDispatch()
+//     const store = useSelector(store => store)
+
+//     const ctaUpdateHandler =  () => {
+//         console.log("Store in AddData  component update btn", store.CardReducer)
+//         let newObj = {
+//           desc: "This is a Bike NEW",
+//           detail: "This is the detail of the bike NEW",
+//           img: "-- NEW",
+//           loc: "lhr NEW",
+//           price: 3444400,
+//         };
+//         dispatch(UpdateCard(newObj));
         
-        try {
-            let fetchData = await db.collection("Ads").get()
+//     }
 
-            let Array = [];
-            fetchData.forEach((doc)=>{
-                Array.push(doc.id)
-            })
-            
-            console.log("Fetch data is =>", Array)
-        } catch (error) {
-            console.log("error", error)
-        }
-    }
-    const ctaUpdateHandler = async () => {
+
+//     const ctaDelHandler = async () => {
+//           console.log("Store data fetch ", store.CardReducer.initialState)
         
-        // try {
-        //     let fetchData = await db.collection("Ads").get()
-
-        //     fetchData.forEach((doc)=>{
-        //         console.log("Fetch data is =>", doc)
-        //     })
-            
-        // } catch (error) {
-        //     console.log("error", error)
-        // }
-    }
-    const ctaDelHandler = async () => {
-        
-        // try {
-        //     let fetchData = await db.collection("Ads").get()
-
-        //     fetchData.forEach((doc)=>{
-        //         console.log("Fetch data is =>", doc)
-        //     })
-            
-        // } catch (error) {
-        //     console.log("error", error)
-        // }
-    }
-    return(
-        <>
-        <button onClick={ctaAddHandler}>Add Data</button>
-        <button onClick={ctaUpdateHandler}>Update Data</button>
-        <button onClick={ctaDelHandler}>Del Data</button>
-        <button onClick={ctaFetchHandler}>Fetch Data</button>
-        </>
-    )
-}
-export default AddData
+//     }
+//     return(
+//         <>
+//         <button onClick={ctaAddHandler}>Add Data</button>
+//         <button onClick={ctaUpdateHandler}>Update Data</button>
+//         <button onClick={ctaDelHandler}>store Data</button>
+//         <button onClick={ctaFetchHandler}>Fetch Data</button>
+//         </>
+//     )
+// }
+// export default AddData
