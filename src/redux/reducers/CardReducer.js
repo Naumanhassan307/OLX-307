@@ -20,7 +20,9 @@ function CardReducer(state = initialState, action){
 
     switch (action.type) {
       case ADD_CARD: {
-        return {};
+        return {
+          initialState: action.payload
+        };
       }
       case FETCH_CARD: {
         return {

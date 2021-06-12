@@ -81,11 +81,7 @@ export default function CustomizedDialogs() {
         <DialogContent dividers>
          <BasicTextFields />
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Add Product
-          </Button>
-        </DialogActions>
+        
       </Dialog>
     </div>
   );

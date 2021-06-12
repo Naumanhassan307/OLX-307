@@ -8,33 +8,43 @@ import {
 
 import { db } from "../../config/Firebase";
 
-export const AddCard=(data) =>{
-    return {
+export const AddCard=(data) => async (dispatch) =>{
+  try {
+    console.log("Data comming from Add card is", data)
+    let res = await db.collection("Cards").add(data);
+    console.log("response ", res.data());
+
+    dispatch({
       type: ADD_CARD,
-      payload: data
-    };
-}
-// export const FetchCard=() => async (dispatch) =>{
-//    try {
-//      let fetchData = await db.collection("Ads").get();
+      payload: res.data(),
+    });
 
-//      let Array = [];
-//      fetchData.forEach((doc) => {
-//        Array.push(doc.data());
-//      });
-
-//      console.log("Fetch data is =>", Array);
-
-//      dispatch({
-//        type: FETCH_CARD,
-//        payload: Array,
-//      });
-
-//    } catch (error) {
-//      console.log("error", error);
-//    }
+  } catch (error) {
+    console.log("error is=>". error)
+  }
     
-// }
+}
+export const FetchCard=() => async (dispatch) =>{
+   try {
+     let fetchData = await db.collection("Cards").get();
+
+     let Array = [];
+     fetchData.forEach((doc) => {
+       Array.push(doc.data());
+     });
+
+     console.log("Fetch data is =>", Array);
+
+     dispatch({
+       type: FETCH_CARD,
+       payload: Array,
+     });
+
+   } catch (error) {
+     console.log("error", error);
+   }
+    
+}
 // export const DelCard=(data) =>{
 //     return {
 //       type: DEL_CARD,

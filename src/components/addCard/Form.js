@@ -2,7 +2,13 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
+import DialogActions from "@material-ui/core/MenuItem";
+import Button from "@material-ui/core/Button";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+// import the action 
+import {AddCard} from "../../redux/actions/Action"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,49 +21,102 @@ const useStyles = makeStyles((theme) => ({
 
 const currencies = [
   {
-    value: 'CARS',
-    label: 'CARS',
+    value: "CARS",
+    label: "CARS",
   },
   {
-    value: 'BIKES',
-    label: 'BIKES',
+    value: "BIKES",
+    label: "BIKES",
   },
   {
-    value: 'PHONES',
-    label: 'PHONES',
+    value: "PHONES",
+    label: "PHONES",
   },
   {
-    value: 'OTHER',
-    label: 'OTHER',
+    value: "OTHER",
+    label: "OTHER",
   },
 ];
-
-
 
 export default function BasicTextFields() {
   const classes = useStyles();
   const [currency, setCurrency] = useState("Cars");
 
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [categ, setCateg] = useState("");
+  const [detail, setDetail] = useState("");
+  const [loc, setLoc] = useState("");
+  const [price, setPrice] = useState("");
 
 
-  const [title, setTitle] = useState("")
+  const dispatch = useDispatch()
+
+  const ctaHandler = () => {
+    if (
+      title === "" ||
+      desc === "" ||
+      categ === "" ||
+      detail === "" ||
+      loc === "" ||
+      price === ""
+    ) {
+      alert("Please Fill All Fields!");
+    } else {
+        let newCard = {
+          cardTitle: title,
+          cardDesc: desc,
+          cardCateg: categ,
+          cardDetail: detail,
+          cardLoc: loc,
+          cardPrice: price,
+        };
+
+        console.log("data is before ", newCard);
+        dispatch(AddCard(newCard));
+      console.log("data is after ", newCard);
+      setTitle("");
+      setDesc("");
+      setCateg("");
+      setDetail("");
+      setLoc("");
+      setPrice("");
+
+      
+      
+    }
+  };
 
 
-  const ctaTitleHandler = (e) =>{
 
-    console.log("title state")
-  }
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="standard-basic" label="Title" onChange={ctaTitleHandler} />
-      <TextField id="standard-basic" label="Description" />
       <TextField
+        required
+        id="standard-basic"
+        label="Title"
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
+      />
+      <TextField
+        required
+        id="standard-basic"
+        label="Description"
+        onChange={(e) => {
+          setDesc(e.target.value);
+        }}
+      />
+      <TextField
+        required
         id="standard-select-currency"
         select
         label="Category"
         value={currency}
-        // onChange={handleChange}
+        onChange={(e) => {
+          setCateg(e.target.value);
+        }}
         helperText="Please select category"
       >
         {currencies.map((option) => (
@@ -66,14 +125,36 @@ export default function BasicTextFields() {
           </MenuItem>
         ))}
       </TextField>
-      <TextField id="standard-basic" label="Detail" />
-      <TextField id="standard-basic" label="Location" />
       <TextField
+        required
+        id="standard-basic"
+        label="Detail"
+        onChange={(e) => {
+          setDetail(e.target.value);
+        }}
+      />
+      <TextField
+        required
+        id="standard-basic"
+        label="Location"
+        onChange={(e) => {
+          setLoc(e.target.value);
+        }}
+      />
+      <TextField
+        required
+        type="number"
         id="standard-basic"
         label="Price (PKR)"
-        
+        onChange={(e) => {
+          setPrice(e.target.value);
+        }}
       />
-      
+      <DialogActions>
+        <Button autoFocus onClick={ctaHandler} color="primary">
+          Add Product
+        </Button>
+      </DialogActions>
     </form>
   );
 }
