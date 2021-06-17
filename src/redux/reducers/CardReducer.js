@@ -9,11 +9,12 @@ import {
 
 
 let initialState = {
-    desc: "This is a Bike",
-    detail: "This is the detail of the bike",
-    img : "--",
-    loc: "lhr",
-    price: 200
+    desc: "",
+    detail: "",
+    img : "",
+    loc: "",
+    price: "",
+    newState:[]
 }
 
 function CardReducer(state = initialState, action){
@@ -21,20 +22,24 @@ function CardReducer(state = initialState, action){
     switch (action.type) {
       case ADD_CARD: {
         return {
-          initialState: action.payload
+          state: action.payload
         };
       }
       case FETCH_CARD: {
-        return {
-          initialState:action.payload
-        };
+      return{
+        ...state,
+        newState: action.payload
+
+       }
+      //  return newData;
+     
       }
       case DEL_CARD: {
         return {};
       }
       case UPD_CARD: {
         return {
-            initialState: action.payload
+            state: action.payload
         };
       }
 

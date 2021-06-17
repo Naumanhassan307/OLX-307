@@ -8,8 +8,8 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-
-import BasicTextFields from "./Form"
+import "./cardDetail.css"
+import c16 from "../../../assets/c16.jfif";
 
 const styles = (theme) => ({
   root: {
@@ -55,20 +55,27 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function CustomizedDialogs() {
+export default function CustomizedDialogs(
+                {cardPrice,
+                cardCateg,
+                cardDetail,
+                cardTitle,
+                cardLoc,
+                cardDesc}
+                ) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
-    setOpen();
+    setOpen(false);
   };
 
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        SELL PRODUCT
+        Detail
       </Button>
       <Dialog
         onClose={handleClose}
@@ -76,11 +83,24 @@ export default function CustomizedDialogs() {
         open={open}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Create Product
+          {cardTitle}
         </DialogTitle>
-        <DialogContent dividers>
-          <BasicTextFields setOpen={setOpen} />
-        </DialogContent>
+        <div className="card-div">
+          <div>
+            <img src={c16} className="img-di"/>
+          </div>
+          <div>
+            <h3>{cardDesc}</h3> <br />
+            <p>{cardDetail}</p> <br />
+            <h5>PKR: {cardPrice}</h5>
+            <h5>Location: {cardLoc}</h5>
+          </div>
+        </div>
+        {/* <DialogActions>
+          <Button autoFocus onClick={handleClose} color="primary">
+            Save changes
+          </Button>
+        </DialogActions> */}
       </Dialog>
     </div>
   );

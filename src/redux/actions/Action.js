@@ -27,13 +27,20 @@ export const AddCard=(data) => async (dispatch) =>{
 export const FetchCard=() => async (dispatch) =>{
    try {
      let fetchData = await db.collection("Cards").get();
+    
 
      let Array = [];
      fetchData.forEach((doc) => {
-       Array.push(doc.data());
+       Array.push({
+         ...doc.data(),
+         cardId: doc.id
+         
+       });
      });
+     
 
-     console.log("Fetch data is =>", Array);
+     console.log("Fetch data in action =>", Array);
+     
 
      dispatch({
        type: FETCH_CARD,

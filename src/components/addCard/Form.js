@@ -38,7 +38,7 @@ const currencies = [
   },
 ];
 
-export default function BasicTextFields() {
+export default function BasicTextFields({setOpen}) {
   const classes = useStyles();
   const [currency, setCurrency] = useState("Cars");
 
@@ -51,6 +51,10 @@ export default function BasicTextFields() {
 
 
   const dispatch = useDispatch()
+
+  const close = () => {
+    setOpen(false);
+  };
 
   const ctaHandler = () => {
     if (
@@ -82,11 +86,10 @@ export default function BasicTextFields() {
       setLoc("");
       setPrice("");
 
-      
+      close()
       
     }
   };
-
 
 
 

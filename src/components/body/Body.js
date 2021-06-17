@@ -1,25 +1,49 @@
 
 import {useDispatch, useSelector} from "react-redux"
 import {FetchCard} from "../../redux/actions/Action"
+import { useEffect, useState } from "react"
+
+import Card from "../card/Card"
+import "./body.css"
+
 function Body(){
-    const store = useSelector(store => store.CardReducer.initialState)
+    const store = useSelector(store => store.CardReducer.newState)
+    console.log("store data =>", store)
+
+
     const dispatch = useDispatch()
     
+      
+   
+    useEffect(()=>{
+     dispatch(FetchCard());
+
+   }, [])
+    
+
+    return (
+      <>
+       
         
-
-    const ctaFHandler= () =>{
-        dispatch(FetchCard());
-
-        console.log("Data is fetched from DB");
-    }
-    const ctaHandler= () =>{
-        console.log("store data =>", store)
-    }
-    return(
-        <>
-        <button onClick={ctaFHandler}>Get DB data</button>
-        <button onClick={ctaHandler}>Get store data</button>
-        </>
-    )
+      <div className="bdy-dv">
+       
+        {
+          store.map((item)=>{
+            return (
+              <Card
+              cardTitle={item.cardTitle}
+                cardPrice={item.cardPrice}
+                cardCateg={item.cardCateg}
+                cardDetail={item.cardDetail}
+                cardLoc={item.cardLoc}
+                cardDesc={item.cardDesc}
+              />
+            );
+          })
+        }
+        
+      </div>
+      </>
+    );
 }
 export default Body;
