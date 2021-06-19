@@ -2,13 +2,21 @@
 import {
   ADD_CARD,
   FETCH_CARD,
+  
   DEL_CARD,
   UPD_CARD,
 } from "../constTypes/ConstType";
+import {useState} from "react"
 
 import { db } from "../../config/Firebase";
 
+
+
+
 export const AddCard=(data) => async (dispatch) =>{
+   
+ 
+  
   try {
     console.log("Data comming from Add card is", data)
     let res = await db.collection("Cards").add(data);
@@ -22,8 +30,10 @@ export const AddCard=(data) => async (dispatch) =>{
   } catch (error) {
     console.log("error is=>". error)
   }
+  
     
 }
+
 export const FetchCard=() => async (dispatch) =>{
    try {
      let fetchData = await db.collection("Cards").get();
