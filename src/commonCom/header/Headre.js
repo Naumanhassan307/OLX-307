@@ -1,16 +1,17 @@
-import { Navbar, Form, InputGroup, FormControl, Button } from "react-bootstrap";
-import CustomizedDialogs from "../../components/addCard/AddCard"
-import Loginpop from "../../components/login/Popup"
+import { Navbar, Form, InputGroup, FormControl } from "react-bootstrap";
+import CustomizedDialogs from "../../components/addCard/AddCard";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 import "./Header.css";
 function Header() {
- 
   return (
     <>
       <div className="parent-div">
         <Navbar bg="light" expand="lg" className="main-nav">
-          <Navbar.Brand className="nav-logo">OlX</Navbar.Brand>
-
+          <Link to="/">
+            <Navbar.Brand className="nav-logo">OlX</Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse id="basic-navbar-nav">
@@ -24,11 +25,7 @@ function Header() {
             &nbsp; &nbsp; &nbsp; &nbsp;
             <Form inline className="nav-second-form">
               <InputGroup>
-                {/* <InputGroup.Prepend>
-                <InputGroup.Text id="basic-addon1">
-                  <BsSearch />
-                </InputGroup.Text>
-              </InputGroup.Prepend> */}
+               
                 <FormControl
                   className="nav-2nd-form"
                   placeholder="Find Cars, Mobile and more..."
@@ -45,7 +42,12 @@ function Header() {
             </div>
             &nbsp; &nbsp; &nbsp;
             <div className="log-btn" className="nav-second-form">
-              <Loginpop />
+              {/* <Loginpop /> */}
+              <Link to="/login">
+                <Button variant="outlined" color="primary">
+                  Login
+                </Button>
+              </Link>
             </div>
           </Navbar.Collapse>
         </Navbar>
