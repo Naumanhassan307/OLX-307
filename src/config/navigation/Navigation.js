@@ -6,6 +6,7 @@ import Slider from "../../components/slider/Slider"
 import Body from "../../components/body/Body"
 import Signup from "../../components/signup/SignUp"
 import Login from "../../components/login/login";
+import Footer from "../../commonCom/footer/Footer"
 import PrivateNav from "./PrivateNav";
 import PublicNav from "./PublicNav";
 
@@ -27,6 +28,7 @@ function Navigation(){
             <Login />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     );
 }
