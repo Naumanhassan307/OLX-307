@@ -1,9 +1,10 @@
 import { Navbar, Form, InputGroup, FormControl, Button } from "react-bootstrap";
-import { BsSearch } from "react-icons/bs";
 import CustomizedDialogs from "../../components/addCard/AddCard"
+import Loginpop from "../../components/login/Popup"
 
 import "./Header.css";
 function Header() {
+ 
   return (
     <>
       <Navbar bg="light" expand="lg" className="main-nav">
@@ -22,16 +23,17 @@ function Header() {
           &nbsp; &nbsp; &nbsp; &nbsp;
           <Form inline>
             <InputGroup>
-              <InputGroup.Prepend>
+              {/* <InputGroup.Prepend>
                 <InputGroup.Text id="basic-addon1">
                   <BsSearch />
                 </InputGroup.Text>
-              </InputGroup.Prepend>
+              </InputGroup.Prepend> */}
               <FormControl
                 className="nav-2nd-form"
                 placeholder="Find Cars, Mobile and more..."
                 aria-label="Find Cars, Mobile and more..."
                 aria-describedby="basic-addon1"
+
               />
             </InputGroup>
           </Form>
@@ -39,6 +41,10 @@ function Header() {
             Login
           </Button> */}
           <CustomizedDialogs />
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          <Loginpop />
         </Navbar.Collapse>
       </Navbar>
     </>

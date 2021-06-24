@@ -1,5 +1,5 @@
 .main-card-div{
-    height: 450px;
+    height: 100% auto;
     width: 270px;
     background-color: rgba(220, 220, 220, 0.315);
     border-radius: 20px;

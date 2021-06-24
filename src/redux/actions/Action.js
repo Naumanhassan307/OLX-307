@@ -34,34 +34,31 @@ export const AddCard=(data) => async (dispatch) =>{
     
 }
 
-export const FetchCard=() => async (dispatch) =>{
-   try {
-     let fetchData = await db.collection("Cards").get();
-    
+export const FetchCard = (setLoader) => async (dispatch) => {
+  setLoader(true);
+  try {
+    let fetchData = await db.collection("Cards").get();
 
-     let Array = [];
-     fetchData.forEach((doc) => {
-       Array.push({
-         ...doc.data(),
-         cardId: doc.id
-         
-       });
-     });
-     
+    let Array = [];
+    fetchData.forEach((doc) => {
+      Array.push({
+        ...doc.data(),
+        cardId: doc.id,
+      });
+    });
 
-     console.log("Fetch data in action =>", Array);
-     
+    console.log("Fetch data in action =>", Array);
 
-     dispatch({
-       type: FETCH_CARD,
-       payload: Array,
-     });
-
-   } catch (error) {
-     console.log("error", error);
-   }
-    
-}
+    dispatch({
+      type: FETCH_CARD,
+      payload: Array,
+    });
+  } catch (error) {
+    console.log("error", error);
+  } finally {
+    setLoader(false);
+  }
+};
 // export const DelCard=(data) =>{
 //     return {
 //       type: DEL_CARD,

@@ -4,3 +4,9 @@
     height: 100%;
     flex-wrap: wrap;
 }
+.ldg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px !important;
+}
