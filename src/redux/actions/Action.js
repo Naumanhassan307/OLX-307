@@ -2,15 +2,38 @@
 import {
   ADD_CARD,
   FETCH_CARD,
-  
   DEL_CARD,
   UPD_CARD,
+  UPLOAD_CARD,
 } from "../constTypes/ConstType";
-import {useState} from "react"
-
-import { db } from "../../config/Firebase";
+import { useState } from "react";
 
 
+import { db , storage} from "../../config/Firebase";
+
+
+
+
+export const UploadCard = (image) => async (dispatch) =>{
+  console.log("Action Run... 1", image)
+  
+  try {
+    const AddImage =await storage.ref(`images/${image.name}`).put(image)
+    AddImage.on("state changed", 
+      (snapshot)=>{},
+      (error)=>{
+        console.log("Error is", error)
+      },
+      ()=>{
+        AddImage.snapshot.ref.getDownloadURL().then((url)=>{console.log("File at ", url)})
+      }
+    )
+    
+  } catch (error) {
+    console.log("Error", error)
+  }
+  
+}
 
 
 export const AddCard=(data) => async (dispatch) =>{

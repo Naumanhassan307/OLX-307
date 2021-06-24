@@ -8,7 +8,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 // import the action 
-import {AddCard} from "../../redux/actions/Action"
+import { AddCard, UploadCard } from "../../redux/actions/Action";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,6 +49,7 @@ export default function BasicTextFields({setOpen}) {
   const [detail, setDetail] = useState("");
   const [loc, setLoc] = useState("");
   const [price, setPrice] = useState("");
+  const [image, setImage] = useState("")
 
 
   const dispatch = useDispatch()
@@ -55,40 +57,49 @@ export default function BasicTextFields({setOpen}) {
   const close = () => {
     setOpen(false);
   };
+ 
 
+  
   const ctaHandler = () => {
-    if (
-      title === "" ||
-      desc === "" ||
-      categ === "" ||
-      detail === "" ||
-      loc === "" ||
-      price === ""
-    ) {
-      alert("Please Fill All Fields!");
-    } else {
-        let newCard = {
-          cardTitle: title,
-          cardDesc: desc,
-          cardCateg: categ,
-          cardDetail: detail,
-          cardLoc: loc,
-          cardPrice: price,
-        };
+    console.log("cta Run..", image);
+    dispatch(UploadCard(image));
 
-        console.log("data is before ", newCard);
-        dispatch(AddCard(newCard));
-      console.log("data is after ", newCard);
-      setTitle("");
-      setDesc("");
-      setCateg("");
-      setDetail("");
-      setLoc("");
-      setPrice("");
+    // if (
+    //   title === "" ||
+    //   desc === "" ||
+    //   categ === "" ||
+    //   detail === "" ||
+    //   loc === "" ||
+    //   price === ""
+    // ) {
+    //   alert("Please Fill All Fields!");
+    // } else {
+    //     let newCard = {
+    //       cardTitle: title,
+    //       cardDesc: desc,
+    //       cardCateg: categ,
+    //       cardDetail: detail,
+    //       cardLoc: loc,
+    //       cardPrice: price,
+    //       cardImg: Image,
+    //     };
 
-      close()
+    //     console.log("data is before ", newCard);
+    //     dispatch(AddCard(newCard));
+    //   console.log("data is after ", newCard);
+    //   setTitle("");
+    //   setDesc("");
+    //   setCateg("");
+    //   setDetail("");
+    //   setLoc("");
+    //   setPrice("");
+    
+
+    //   close()
       
-    }
+    // }
+    
+   
   };
 
 
@@ -153,6 +164,11 @@ export default function BasicTextFields({setOpen}) {
           setPrice(e.target.value);
         }}
       />
+     
+      <div>
+        <input type="file" onChange={(e)=>{setImage(e.target.files)}}/>
+        
+      </div>
       <DialogActions>
         <Button autoFocus onClick={ctaHandler} color="primary">
           Add Product

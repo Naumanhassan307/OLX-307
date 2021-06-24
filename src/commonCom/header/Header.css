@@ -19,3 +19,22 @@
     width: 400px !important;
     margin-right: 50px !important;
 }
+.parent-div{
+    /* display: flex !important; */
+    width: 100%;
+}
+@media screen and (max-width: 980px){
+    .parent-div{
+    /* display: flex !important; */
+    width: 100%;
+    height: auto !important;
+}
+.main-nav{
+    height: auto !important;
+}
+.nav-second-form{
+    width: 60% !important;
+    margin-left: 90px !important;
+    padding: 10px !important;
+}
+}
